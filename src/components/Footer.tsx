@@ -3,7 +3,7 @@ import { business } from "@/data/business";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#1f1c18] bg-[#0a0908]/85 backdrop-blur-sm py-12">
+    <footer className="border-t border-[#1f1c18] bg-[#0a0908]/95 py-12">
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div className="text-center md:text-left">

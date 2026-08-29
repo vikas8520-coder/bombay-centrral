@@ -44,11 +44,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col bg-[#0a0908] text-[#f5f0e8]">
         {/* Force scroll to top on load — prevents auto-scroll bug */}
         <ScrollToTop />
-        {/* Fixed menu PDF background — 100% opacity, static, full page */}
+        {/* Fixed menu PDF background — optimized JPEG, static, full page */}
         <div
           className="fixed inset-0 z-0 pointer-events-none"
           style={{
-            backgroundImage: "url('/menu-bg.png')",
+            backgroundImage: "url('/menu-bg.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center top",
             backgroundRepeat: "no-repeat",

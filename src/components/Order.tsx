@@ -33,7 +33,7 @@ const orderLinks = [
 
 export default function Order() {
   return (
-    <section id="order" className="relative bg-[#0a0908]/85 backdrop-blur-sm py-24">
+    <section id="order" className="relative bg-[#0a0908]/95 py-24">
       <div className="mx-auto max-w-5xl px-6">
         {/* Header */}
         <div className="mb-16 text-center">
@@ -56,7 +56,7 @@ export default function Order() {
               href={platform.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`tilt-card group relative overflow-hidden rounded-3xl border border-[#1f1c18] bg-gradient-to-b ${platform.bgGradient} p-8 backdrop-blur-sm transition-all hover:border-[${platform.color}]/40`}
+              className={`tilt-card group relative overflow-hidden rounded-3xl border border-[#1f1c18] bg-gradient-to-b ${platform.bgGradient} p-8 bg-[#141210]/90 transition-all hover:border-[${platform.color}]/40`}
             >
               {/* Badge */}
               {platform.badge && (

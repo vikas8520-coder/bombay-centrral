@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* Performance: skip rendering off-screen sections */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
 /* Norwester font — for all headings and logo name */
 @font-face {
   font-family: "Norwester";
@@ -85,14 +91,13 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.02em;
 }
 
-/* Card tilt hover */
+/* Card hover — simplified for performance */
 .tilt-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  transform-style: preserve-3d;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .tilt-card:hover {
-  transform: perspective(1000px) rotateY(-5deg) rotateX(2deg) translateY(-4px);
-  box-shadow: 0 20px 40px rgba(240, 192, 32, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(240, 192, 32, 0.12);
 }
 
 /* Section fade-in */

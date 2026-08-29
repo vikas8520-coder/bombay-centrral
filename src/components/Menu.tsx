@@ -3,7 +3,7 @@ import { menu } from "@/data/business";
 
 export default function Menu() {
   return (
-    <section id="menu" className="relative bg-[#0a0908]/85 backdrop-blur-sm py-24">
+    <section id="menu" className="relative bg-[#0a0908]/95 py-24">
       {/* Top border */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#f0c000] to-transparent" />
 
@@ -22,36 +22,36 @@ export default function Menu() {
         </div>
 
         {/* Menu categories */}
-        <div className="space-y-16">
+        <div className="space-y-10">
           {menu.map((category) => (
             <div key={category.category}>
-              <h3 className="mb-8 flex items-center gap-3 text-2xl font-bold text-[#ffd940]">
+              <h3 className="mb-5 flex items-center gap-3 text-xl font-bold text-[#ffd940]">
                 <span className="h-px flex-1 bg-[#f0c000]/30" />
                 {category.category}
                 <span className="h-px flex-1 bg-[#f0c000]/30" />
               </h3>
 
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4">
                 {category.items.map((item) => (
                   <div
                     key={item.name}
-                    className="tilt-card group relative overflow-hidden rounded-2xl border border-[#1f1c18] bg-[#1f1c18]/60 backdrop-blur-sm"
+                    className="tilt-card group relative overflow-hidden rounded-xl border border-[#1f1c18] bg-[#1f1c18]/90"
                   >
-                    {/* Food image */}
+                    {/* Food image — compact */}
                     {item.image && (
-                      <div className="img-zoom relative h-48 w-full">
+                      <div className="img-zoom relative h-24 w-full">
                         <Image
                           src={item.image}
                           alt={item.name}
                           fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                           className="object-cover"
                         />
                         {/* Dark gradient overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-[#1f1c18] via-transparent to-transparent" />
                         {/* Tag */}
                         {item.tag && (
-                          <span className="absolute top-3 left-3 rounded-full bg-[#f0c000] px-3 py-1 text-xs font-bold text-[#141210]">
+                          <span className="absolute top-2 left-2 rounded-full bg-[#f0c000] px-2 py-0.5 text-[10px] font-bold text-[#141210]">
                             {item.tag}
                           </span>
                         )}
@@ -59,14 +59,14 @@ export default function Menu() {
                     )}
 
                     {/* Content */}
-                    <div className="relative p-5">
-                      <div className="flex items-start justify-between gap-3">
-                        <h4 className="text-lg font-bold text-[#f5f0e8]">{item.name}</h4>
-                        <span className="whitespace-nowrap text-xl font-bold text-[#f0c000]">
+                    <div className="relative p-3">
+                      <div className="flex items-start justify-between gap-2">
+                        <h4 className="text-sm font-bold leading-tight text-[#f5f0e8]">{item.name}</h4>
+                        <span className="whitespace-nowrap text-base font-bold text-[#f0c000]">
                           {item.price}
                         </span>
                       </div>
-                      <p className="mt-2 text-sm leading-relaxed text-[#f5f0e8]/60">
+                      <p className="mt-1 text-xs leading-snug text-[#f5f0e8]/60">
                         {item.description}
                       </p>
                     </div>
@@ -81,9 +81,19 @@ export default function Menu() {
         </div>
 
         {/* Note */}
-        <p className="mt-16 text-center text-sm text-[#f5f0e8]/40">
-          * Prices are indicative. Visit our outlets or order via WhatsApp for current pricing and availability.
-        </p>
+        <div className="mt-16 flex flex-col items-center gap-3 text-center">
+          <div className="flex items-center gap-4">
+            <span className="rounded-full border border-[#4a7c2f]/40 bg-[#4a7c2f]/10 px-4 py-2 text-sm font-bold text-[#7bc55f]">
+              100% Pure Veg
+            </span>
+            <span className="rounded-full border border-[#f0c000]/40 bg-[#f0c000]/10 px-4 py-2 text-sm font-bold text-[#f0c000]">
+              Ask for Jain option
+            </span>
+          </div>
+          <p className="text-sm text-[#f5f0e8]/40">
+            * Prices are indicative. Visit our outlets or order via WhatsApp for current pricing and availability.
+          </p>
+        </div>
       </div>
     </section>
   );

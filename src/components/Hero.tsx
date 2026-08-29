@@ -1,37 +1,28 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import { business } from "@/data/business";
-
-const Scene3D = dynamic(() => import("./Scene3D"), {
-  ssr: false,
-  loading: () => (
-    <div className="flex h-full w-full items-center justify-center">
-      <div className="text-center">
-        <div className="mb-4 animate-pulse text-6xl">🥘</div>
-        <p className="text-sm text-[#f5f0e8]/40">Loading the stall...</p>
-      </div>
-    </div>
-  ),
-});
 
 export default function Hero() {
   return (
     <section
       id="top"
-      className="relative h-screen min-h-[700px] w-full overflow-hidden"
+      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden"
     >
-      <div className="absolute inset-0">
-        <Scene3D />
-      </div>
-
-      {/* Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0908]/40 via-transparent to-[#0a0908]" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0a0908]/60 via-transparent to-transparent" />
+      {/* Semi-circle tint — bottom half, curved top, blended into background */}
+      <div
+        className="absolute bottom-0 left-1/2 -translate-x-1/2"
+        style={{
+          width: "180vw",
+          height: "60vh",
+          borderRadius: "50% 50% 0 0",
+          background: "radial-gradient(ellipse 60% 100% at center bottom, rgba(10,9,8,0.85) 0%, rgba(10,9,8,0.4) 40%, rgba(10,9,8,0.1) 70%, transparent 100%)",
+          filter: "blur(20px)",
+        }}
+      />
 
       {/* Content */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
+      <div className="relative z-10 flex flex-col items-center justify-center px-6 text-center">
         {/* Logo — centerpiece */}
         <div className="fade-up mb-8">
           <Image
@@ -44,8 +35,8 @@ export default function Hero() {
           />
         </div>
 
-        <div className="mb-8 fade-up" style={{ animationDelay: "0.1s" }}>
-          <span className="rounded-full border-2 border-[#f0c000] bg-[#0a0908]/80 px-5 py-2.5 text-sm font-bold text-[#f0c000] backdrop-blur-md">
+        <div className="fade-up mb-8" style={{ animationDelay: "0.1s" }}>
+          <span className="rounded-full border-2 border-[#f0c000] bg-[#0a0908]/95 px-5 py-2.5 text-sm font-bold text-[#f0c000]">
             📍 Mumbai Street Food · Now in Hyderabad
           </span>
         </div>
@@ -63,7 +54,7 @@ export default function Hero() {
           </a>
           <a
             href="#reviews"
-            className="rounded-full border border-[#f5f0e8]/20 bg-[#f5f0e8]/5 px-8 py-4 text-base font-bold text-[#f5f0e8] backdrop-blur-sm transition-all hover:border-[#f0c000] hover:bg-[#f0c000]/10 hover:text-[#f0c000]"
+            className="rounded-full border border-[#f5f0e8]/20 bg-[#0a0908]/80 px-8 py-4 text-base font-bold text-[#f5f0e8] transition-all hover:border-[#f0c000] hover:bg-[#f0c000]/10 hover:text-[#f0c000]"
           >
             Read Reviews
           </a>
@@ -75,11 +66,6 @@ export default function Hero() {
             <div className="h-12 w-px animate-pulse bg-gradient-to-b from-[#f0c000] to-transparent" />
           </div>
         </div>
-      </div>
-
-      <div className="absolute bottom-8 right-8 z-10 hidden items-center gap-2 rounded-full bg-[#141210]/60 px-4 py-2 text-xs text-[#f5f0e8]/50 backdrop-blur-sm md:flex">
-        <span className="animate-pulse">🖱️</span>
-        Drag to explore the stall
       </div>
     </section>
   );

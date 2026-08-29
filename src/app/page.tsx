@@ -7,6 +7,7 @@ import About from "@/components/About";
 import Reviews from "@/components/Reviews";
 import Order from "@/components/Order";
 import Footer from "@/components/Footer";
+import RishabStoryteller from "@/components/RishabStoryteller";
 
 export default function Home() {
   return (
@@ -16,21 +17,21 @@ export default function Home() {
         <Hero />
 
         {/* Marquee strip */}
-        <div className="overflow-hidden border-y border-[#1f1c18] bg-[#0a0908]/85 backdrop-blur-sm py-4">
+        <div className="overflow-hidden border-y border-[#1f1c18] bg-[#0a0908]/95 py-4">
           <div className="marquee flex whitespace-nowrap">
             {Array.from({ length: 2 }).map((_, set) => (
               <div key={set} className="flex items-center gap-8 px-4">
                 {[
-                  "🥘 Vada Pav ₹40",
-                  "🍛 Pav Bhaji ₹120",
-                  "🥗 Bhel Puri ₹60",
-                  "🥪 Bombay Sandwich ₹100",
-                  "🧀 Cheese Pav Bhaji ₹150",
-                  "🔥 Schezwan Maggi ₹80",
-                  "🫓 Misal Pav ₹110",
-                  "🌯 Dabeli ₹50",
-                  "🍜 Tandoori Maggi ₹90",
-                  "🥤 Shikanji ₹30",
+                  "🥘 Vada Pav ₹60",
+                  "🍛 Pav Bhaji ₹150",
+                  "🥗 Bhel Puri ₹70",
+                  "🥪 Bombay Sandwich ₹80",
+                  "🧀 Cheese Pav Bhaji ₹170",
+                  "🔥 Schezwan Maggi ₹120",
+                  "🫓 Misal Pav ₹150",
+                  "🌯 Dabeli ₹70",
+                  "🍜 Tandoori Maggi ₹120",
+                  "🥤 Shikanji ₹50",
                 ].map((item, i) => (
                   <span
                     key={`${set}-${i}`}
@@ -53,6 +54,7 @@ export default function Home() {
         <Order />
       </main>
       <Footer />
+      <RishabStoryteller />
     </>
   );
 }
