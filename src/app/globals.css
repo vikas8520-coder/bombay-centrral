@@ -1,26 +1,145 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Norwester font — for all headings and logo name */
+@font-face {
+  font-family: "Norwester";
+  src: url("/fonts/norwester.woff2") format("woff2"),
+       url("/fonts/norwester.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: #0a0908;
+  --color-foreground: #f5f0e8;
+  --color-brand: #f0c000;
+  --color-brand-dark: #d09020;
+  --color-brand-light: #ffd940;
+  --color-charcoal: #141210;
+  --color-warm-gray: #1f1c18;
+  --color-cream: #f5f0e8;
+  --color-gold: #d09020;
+  --color-chili: #c41e1e;
+  --color-mint: #06a77d;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: auto;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #0a0908;
+  color: #f5f0e8;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar — brand yellow */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #141210;
+}
+::-webkit-scrollbar-thumb {
+  background: #f0c000;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ffd940;
+}
+
+/* Glow pulse — brand yellow */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(240, 192, 32, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(240, 192, 32, 0.6);
+  }
+}
+.glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* Text gradient — brand yellow */
+.text-gradient-brand {
+  background: linear-gradient(135deg, #f0c000 0%, #ffd940 50%, #d09020 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Norwester font utility */
+.font-norwester {
+  font-family: "Norwester", "Arial Narrow", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* Apply Norwester to all headings globally */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Norwester", "Arial Narrow", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* Card tilt hover */
+.tilt-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+}
+.tilt-card:hover {
+  transform: perspective(1000px) rotateY(-5deg) rotateX(2deg) translateY(-4px);
+  box-shadow: 0 20px 40px rgba(240, 192, 32, 0.15);
+}
+
+/* Section fade-in */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fade-up 0.8s ease-out forwards;
+}
+
+/* Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee {
+  animation: marquee 20s linear infinite;
+}
+
+/* Menu paper texture */
+.menu-paper-bg {
+  background-image: url('/menu-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Image zoom on hover */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img {
+  transition: transform 0.5s ease;
+}
+.img-zoom:hover img {
+  transform: scale(1.08);
+}
+
+/* Steam animation */
+@keyframes steam-rise {
+  0% { transform: translateY(0) scale(1); opacity: 0.6; }
+  100% { transform: translateY(-20px) scale(1.5); opacity: 0; }
 }
