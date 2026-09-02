@@ -14,7 +14,7 @@ function Stars({ rating }: { rating: number }) {
 
 export default function Reviews() {
   return (
-    <section id="reviews" className="relative bg-[#0a0908]/95 py-24">
+    <section id="reviews" className="relative bg-[#0a0908]/75 py-24">
       <div className="mx-auto max-w-6xl px-6">
         {/* Header */}
         <div className="mb-16 text-center">
@@ -56,7 +56,7 @@ export default function Reviews() {
           {reviews.map((review, i) => (
             <div
               key={i}
-              className="tilt-card group relative overflow-hidden rounded-2xl border border-[#1f1c18] bg-[#1f1c18]/90 p-6"
+              className="tilt-card group relative overflow-hidden rounded-2xl border border-[#1f1c18] bg-[#1f1c18]/80 p-6"
             >
               {/* Quote mark */}
               <div className="absolute top-4 right-4 text-5xl text-[#f0c000]/10 font-serif">

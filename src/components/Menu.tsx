@@ -3,7 +3,7 @@ import { menu } from "@/data/business";
 
 export default function Menu() {
   return (
-    <section id="menu" className="relative bg-[#0a0908]/95 py-24">
+    <section id="menu" className="relative bg-[#0a0908]/75 py-24">
       {/* Top border */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#f0c000] to-transparent" />
 
@@ -31,27 +31,27 @@ export default function Menu() {
                 <span className="h-px flex-1 bg-[#f0c000]/30" />
               </h3>
 
-              <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4">
+              <div className="grid gap-3 md:grid-cols-4 lg:grid-cols-5">
                 {category.items.map((item) => (
                   <div
                     key={item.name}
-                    className="tilt-card group relative overflow-hidden rounded-xl border border-[#1f1c18] bg-[#1f1c18]/90"
+                    className="tilt-card group relative overflow-hidden rounded-lg border border-[#1f1c18] bg-[#1f1c18]/80"
                   >
                     {/* Food image — compact */}
                     {item.image && (
-                      <div className="img-zoom relative h-24 w-full">
+                      <div className="img-zoom relative h-16 w-full">
                         <Image
                           src={item.image}
                           alt={item.name}
                           fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 20vw"
                           className="object-cover"
                         />
                         {/* Dark gradient overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-[#1f1c18] via-transparent to-transparent" />
                         {/* Tag */}
                         {item.tag && (
-                          <span className="absolute top-2 left-2 rounded-full bg-[#f0c000] px-2 py-0.5 text-[10px] font-bold text-[#141210]">
+                          <span className="absolute top-1 left-1 rounded-full bg-[#f0c000] px-1.5 py-0.5 text-[9px] font-bold text-[#141210]">
                             {item.tag}
                           </span>
                         )}
@@ -59,14 +59,14 @@ export default function Menu() {
                     )}
 
                     {/* Content */}
-                    <div className="relative p-3">
-                      <div className="flex items-start justify-between gap-2">
-                        <h4 className="text-sm font-bold leading-tight text-[#f5f0e8]">{item.name}</h4>
-                        <span className="whitespace-nowrap text-base font-bold text-[#f0c000]">
+                    <div className="relative p-2">
+                      <div className="flex items-start justify-between gap-1">
+                        <h4 className="text-xs font-bold leading-tight text-[#f5f0e8]">{item.name}</h4>
+                        <span className="whitespace-nowrap text-sm font-bold text-[#f0c000]">
                           {item.price}
                         </span>
                       </div>
-                      <p className="mt-1 text-xs leading-snug text-[#f5f0e8]/60">
+                      <p className="mt-0.5 text-[10px] leading-snug text-[#f5f0e8]/60">
                         {item.description}
                       </p>
                     </div>

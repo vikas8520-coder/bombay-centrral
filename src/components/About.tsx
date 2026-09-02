@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section id="about" className="relative overflow-hidden bg-[#0a0908]/95 py-24">
+    <section id="about" className="relative overflow-hidden bg-[#0a0908]/75 py-24">
       {/* Dot pattern */}
       <div
         className="absolute inset-0 opacity-5"
@@ -53,7 +53,7 @@ export default function About() {
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="tilt-card rounded-2xl border border-[#1f1c18] bg-[#1f1c18]/90 p-6 text-center"
+                className="tilt-card rounded-2xl border border-[#1f1c18] bg-[#1f1c18]/80 p-6 text-center"
               >
                 <div className="mb-2 text-3xl">{stat.icon}</div>
                 <div className="text-3xl font-bold text-gradient-brand">

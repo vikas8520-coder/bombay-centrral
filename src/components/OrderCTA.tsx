@@ -2,7 +2,7 @@ import { business } from "@/data/business";
 
 export default function OrderCTA() {
   return (
-    <section id="order" className="relative overflow-hidden bg-[#0a0908]/95 py-24">
+    <section id="order" className="relative overflow-hidden bg-[#0a0908]/75 py-24">
       {/* Glow */}
       <div className="absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#f0c000]/10 blur-3xl" />
 

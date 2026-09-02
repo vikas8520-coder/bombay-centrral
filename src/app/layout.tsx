@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import InteractiveBackgroundClient from "@/components/InteractiveBackgroundClient";
 import ScrollToTop from "@/components/ScrollToTop";
+import VideoBackground from "@/components/VideoBackground";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,17 +45,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col bg-[#0a0908] text-[#f5f0e8]">
         {/* Force scroll to top on load — prevents auto-scroll bug */}
         <ScrollToTop />
-        {/* Fixed menu PDF background — optimized JPEG, static, full page */}
-        <div
-          className="fixed inset-0 z-0 pointer-events-none"
-          style={{
-            backgroundImage: "url('/menu-bg.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center top",
-            backgroundRepeat: "no-repeat",
-            backgroundColor: "#0a0908",
-          }}
-        />
+        {/* Video background — scroll-linked playback */}
+        <VideoBackground />
         {/* Interactive floating text layer — reacts to scroll */}
         <InteractiveBackgroundClient />
         {/* Content wrapper — transparent so PDF + floating text show through */}

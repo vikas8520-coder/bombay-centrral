@@ -5,7 +5,7 @@ import { phoneGallery } from "@/data/business";
 
 export default function Gallery() {
   return (
-    <section id="gallery" className="relative bg-[#0a0908]/95 py-24">
+    <section id="gallery" className="relative bg-[#0a0908]/75 py-24">
       <div className="mx-auto max-w-6xl px-6">
         {/* Header */}
         <div className="mb-16 text-center">

@@ -2,7 +2,7 @@ const orderLinks = [
   {
     name: "Ownly",
     tagline: "Zero commission · Free delivery · Honest pricing",
-    description: "Offline prices = Online prices. No hidden charges, no inflated menu prices.",
+    description: "Order directly from us. Offline prices = Online prices. No hidden charges, no inflated menu prices.",
     url: "https://ownly.app",
     icon: "🛵",
     badge: "Recommended",
@@ -29,11 +29,31 @@ const orderLinks = [
     color: "#e23744",
     bgGradient: "from-[#e23744]/15 to-transparent",
   },
+  {
+    name: "Porter",
+    tagline: "Self-delivery · Bike, auto & car pickup",
+    description: "Order from us directly and get it delivered via Porter. Bike, auto, or car delivery across Hyderabad — no middleman commission.",
+    url: "https://porter.in",
+    icon: "📦",
+    badge: "Zero Commission",
+    color: "#3b82f6",
+    bgGradient: "from-[#3b82f6]/15 to-transparent",
+  },
+  {
+    name: "Rapido",
+    tagline: "Bike taxi & parcel delivery",
+    description: "Get your food delivered fast via Rapido bike parcel. Quick, affordable, direct delivery to your doorstep.",
+    url: "https://rapido.bike",
+    icon: "🏍️",
+    badge: "Zero Commission",
+    color: "#f9c846",
+    bgGradient: "from-[#f9c846]/15 to-transparent",
+  },
 ];
 
 export default function Order() {
   return (
-    <section id="order" className="relative bg-[#0a0908]/95 py-24">
+    <section id="order" className="relative bg-[#0a0908]/75 py-24">
       <div className="mx-auto max-w-5xl px-6">
         {/* Header */}
         <div className="mb-16 text-center">
@@ -44,19 +64,19 @@ export default function Order() {
             Get it <span className="text-gradient-brand">delivered</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-[#f5f0e8]/60">
-            Order from your favourite platform — Ownly, Swiggy, or Zomato.
+            Order from your favourite platform — Ownly, Swiggy, Zomato, Porter, or Rapido.
           </p>
         </div>
 
         {/* Order cards */}
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-5">
           {orderLinks.map((platform) => (
             <a
               key={platform.name}
               href={platform.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`tilt-card group relative overflow-hidden rounded-3xl border border-[#1f1c18] bg-gradient-to-b ${platform.bgGradient} p-8 bg-[#141210]/90 transition-all hover:border-[${platform.color}]/40`}
+              className={`tilt-card group relative overflow-hidden rounded-3xl border border-[#1f1c18] bg-gradient-to-b ${platform.bgGradient} p-8 bg-[#141210]/80 transition-all hover:border-[${platform.color}]/40`}
             >
               {/* Badge */}
               {platform.badge && (
@@ -92,7 +112,7 @@ export default function Order() {
 
         {/* Note */}
         <p className="mt-8 text-center text-sm text-[#f5f0e8]/40">
-          Ownly offers zero-commission pricing — what you see is what you pay. No hidden charges.
+          Ownly, Porter, and Rapido are zero-commission — order directly and save. Swiggy and Zomato also available.
         </p>
       </div>
     </section>

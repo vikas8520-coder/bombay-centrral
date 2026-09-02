@@ -1,40 +1,24 @@
 "use client";
 
-import Image from "next/image";
 import { business } from "@/data/business";
 
 export default function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden"
+      className="relative flex min-h-screen w-full items-end justify-center overflow-hidden pb-20"
     >
-      {/* Semi-circle tint — bottom half, curved top, blended into background */}
+      {/* Tint — bottom half only, seamlessly blended */}
       <div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2"
+        className="absolute bottom-0 left-0 right-0"
         style={{
-          width: "180vw",
-          height: "60vh",
-          borderRadius: "50% 50% 0 0",
-          background: "radial-gradient(ellipse 60% 100% at center bottom, rgba(10,9,8,0.85) 0%, rgba(10,9,8,0.4) 40%, rgba(10,9,8,0.1) 70%, transparent 100%)",
-          filter: "blur(20px)",
+          height: "50vh",
+          background: "linear-gradient(to top, rgba(10,9,8,0.92) 0%, rgba(10,9,8,0.7) 30%, rgba(10,9,8,0.3) 70%, transparent 100%)",
         }}
       />
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center px-6 text-center">
-        {/* Logo — centerpiece */}
-        <div className="fade-up mb-8">
-          <Image
-            src="/logo.png"
-            alt="Bombay Centrral"
-            width={300}
-            height={300}
-            className="rounded-3xl shadow-2xl shadow-[#f0c000]/30"
-            priority
-          />
-        </div>
-
+      {/* Content — positioned in lower half */}
+      <div className="relative z-10 flex flex-col items-center justify-center px-6 text-center pb-10">
         <div className="fade-up mb-8" style={{ animationDelay: "0.1s" }}>
           <span className="rounded-full border-2 border-[#f0c000] bg-[#0a0908]/95 px-5 py-2.5 text-sm font-bold text-[#f0c000]">
             📍 Mumbai Street Food · Now in Hyderabad

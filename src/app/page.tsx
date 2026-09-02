@@ -17,21 +17,21 @@ export default function Home() {
         <Hero />
 
         {/* Marquee strip */}
-        <div className="overflow-hidden border-y border-[#1f1c18] bg-[#0a0908]/95 py-4">
+        <div className="overflow-hidden border-y border-[#1f1c18] bg-[#0a0908]/75 py-4">
           <div className="marquee flex whitespace-nowrap">
             {Array.from({ length: 2 }).map((_, set) => (
               <div key={set} className="flex items-center gap-8 px-4">
                 {[
-                  "🥘 Vada Pav ₹60",
-                  "🍛 Pav Bhaji ₹150",
-                  "🥗 Bhel Puri ₹70",
-                  "🥪 Bombay Sandwich ₹80",
-                  "🧀 Cheese Pav Bhaji ₹170",
-                  "🔥 Schezwan Maggi ₹120",
-                  "🫓 Misal Pav ₹150",
-                  "🌯 Dabeli ₹70",
-                  "🍜 Tandoori Maggi ₹120",
-                  "🥤 Shikanji ₹50",
+                  "🥘 Vada Pav",
+                  "🍛 Pav Bhaji",
+                  "🥗 Bhel Puri",
+                  "🥪 Bombay Sandwich",
+                  "🧀 Cheese Pav Bhaji",
+                  "🔥 Schezwan Maggi",
+                  "🫓 Misal Pav",
+                  "🌯 Dabeli",
+                  "🍜 Tandoori Maggi",
+                  "🥤 Shikanji",
                 ].map((item, i) => (
                   <span
                     key={`${set}-${i}`}

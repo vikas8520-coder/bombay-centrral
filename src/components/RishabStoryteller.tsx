@@ -42,7 +42,7 @@ const sectionTips: Record<SectionId, string[]> = {
   order: [
     "🛵 Ownly gets you the freshest delivery — try it first!",
     "🛵 We're open till 11 PM — late-night cravings sorted!",
-    "🛵 Swiggy and Zomato both deliver to your doorstep!",
+    "🛵 Porter and Rapido deliver directly — zero commission!",
     "🛵 Ordering the Schezwan Maggi? You won't regret it!",
     "🛵 First-time? Try the Classic Vada Pav — can't go wrong!",
   ],

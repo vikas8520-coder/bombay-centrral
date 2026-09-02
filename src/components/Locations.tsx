@@ -2,7 +2,7 @@ import { locations } from "@/data/business";
 
 export default function Locations() {
   return (
-    <section id="locations" className="relative bg-[#0a0908]/95 py-24">
+    <section id="locations" className="relative bg-[#0a0908]/75 py-24">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-16 text-center">
           <p className="mb-2 text-sm font-bold uppercase tracking-widest text-[#f0c000]">
@@ -20,7 +20,7 @@ export default function Locations() {
           {locations.map((loc, i) => (
             <div
               key={loc.name}
-              className="tilt-card group relative overflow-hidden rounded-3xl border border-[#1f1c18] bg-gradient-to-b from-[#1f1c18]/60 to-[#141210]/40 p-8 bg-[#141210]/90"
+              className="tilt-card group relative overflow-hidden rounded-3xl border border-[#1f1c18] bg-gradient-to-b from-[#1f1c18]/60 to-[#141210]/40 p-8 bg-[#141210]/80"
             >
               <div className="mb-4 flex items-center justify-between">
                 <span className="text-5xl font-bold text-[#f0c000]/20">0{i + 1}</span>

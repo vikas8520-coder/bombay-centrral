@@ -26,7 +26,7 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? "bg-[#141210]/95 shadow-lg shadow-black/30"
+          ? "bg-[#141210]/80 shadow-lg shadow-black/30"
           : "bg-transparent"
       }`}
     >
@@ -74,7 +74,7 @@ export default function Navbar() {
       </div>
 
       {menuOpen && (
-        <div className="bg-[#141210]/95 md:hidden">
+        <div className="bg-[#141210]/80 md:hidden">
           <div className="flex flex-col gap-4 px-6 py-6">
             {links.map((link) => (
               <a
