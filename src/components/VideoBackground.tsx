@@ -99,7 +99,7 @@ export default function VideoBackground() {
         muted
         playsInline
         preload="auto"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-contain md:object-cover"
         style={{ opacity: ready ? 1 : 0, transition: "opacity 0.5s ease" }}
       />
 
