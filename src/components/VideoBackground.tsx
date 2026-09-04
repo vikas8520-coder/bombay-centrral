@@ -100,6 +100,7 @@ export default function VideoBackground() {
         playsInline
         preload="auto"
         className="absolute inset-0 h-full w-full object-cover"
+        style={{ opacity: ready ? 1 : 0, transition: "opacity 0.5s ease" }}
       />
 
       {/* Loading state — dark while video preloads */}
