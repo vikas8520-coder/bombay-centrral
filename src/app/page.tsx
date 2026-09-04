@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Menu from "@/components/Menu";
@@ -7,7 +8,11 @@ import About from "@/components/About";
 import Reviews from "@/components/Reviews";
 import Order from "@/components/Order";
 import Footer from "@/components/Footer";
-import RishabStoryteller from "@/components/RishabStoryteller";
+
+// Lazy-load RishabStoryteller — it uses framer-motion which is heavy
+const RishabStoryteller = dynamic(() => import("@/components/RishabStoryteller"), {
+  loading: () => null,
+});
 
 export default function Home() {
   return (
