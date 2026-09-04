@@ -31,7 +31,7 @@ function MenuItemCard({
     >
       {/* Food image — compact */}
       {item.image && (
-        <div className="img-zoom relative h-16 w-full">
+        <div className="img-zoom relative h-14 w-full md:h-16">
           <Image
             src={item.image}
             alt={item.name}
@@ -251,7 +251,7 @@ export default function Menu() {
                 <span className="h-px flex-1 bg-[#f0c000]/30" />
               </h3>
 
-              <div className="grid gap-3 md:grid-cols-4 lg:grid-cols-5">
+              <div className="grid grid-cols-2 gap-2.5 md:grid-cols-4 md:gap-3 lg:grid-cols-5">
                 {category.items.map((item) => (
                   <MenuItemCard
                     key={item.name}

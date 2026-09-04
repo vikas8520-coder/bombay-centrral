@@ -99,8 +99,18 @@ export default function VideoBackground() {
         muted
         playsInline
         preload="auto"
-        className="absolute inset-0 h-full w-full object-contain md:object-cover"
-        style={{ opacity: ready ? 1 : 0, transition: "opacity 0.5s ease" }}
+        className="absolute h-full w-full object-cover"
+        style={{
+          opacity: ready ? 1 : 0,
+          transition: "opacity 0.5s ease",
+          // Slightly zoom out on mobile to show more of the frame
+          // object-cover fills the screen, scale < 1 would create gaps
+          // so we use object-fit: cover on a slightly larger element
+          inset: "-8%",
+          width: "116%",
+          height: "116%",
+          maxWidth: "none",
+        }}
       />
 
       {/* Loading state — dark while video preloads */}

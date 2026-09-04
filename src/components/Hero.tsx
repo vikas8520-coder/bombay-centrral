@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-screen w-full items-end justify-center overflow-hidden pb-20"
+      className="relative flex min-h-screen w-full items-end justify-center overflow-hidden pb-28 md:pb-20"
     >
       {/* Tint — bottom half only, seamlessly blended */}
       <div
@@ -18,18 +18,18 @@ export default function Hero() {
       />
 
       {/* Content — positioned in lower half */}
-      <div className="relative z-10 flex flex-col items-center justify-center px-6 text-center pb-10">
-        <div className="fade-up mb-8" style={{ animationDelay: "0.1s" }}>
-          <span className="rounded-full border-2 border-[#f0c000] bg-[#0a0908]/95 px-5 py-2.5 text-sm font-bold text-[#f0c000]">
+      <div className="relative z-10 flex flex-col items-center justify-center px-6 text-center pb-16 md:pb-10">
+        <div className="fade-up mb-6 md:mb-8" style={{ animationDelay: "0.1s" }}>
+          <span className="rounded-full border-2 border-[#f0c000] bg-[#0a0908]/95 px-4 py-2 text-xs font-bold text-[#f0c000] md:px-5 md:py-2.5 md:text-sm">
             📍 Mumbai Street Food · Now in Hyderabad
           </span>
         </div>
 
-        <p className="fade-up max-w-2xl text-lg font-medium text-[#f5f0e8] md:text-xl" style={{ animationDelay: "0.2s", textShadow: "0 2px 8px rgba(0,0,0,0.9)" }}>
+        <p className="fade-up max-w-2xl text-base font-medium text-[#f5f0e8] md:text-xl" style={{ animationDelay: "0.2s", textShadow: "0 2px 8px rgba(0,0,0,0.9)" }}>
           {business.tagline}
         </p>
 
-        <div className="fade-up mt-10 flex flex-col gap-4 sm:flex-row" style={{ animationDelay: "0.3s" }}>
+        <div className="fade-up mt-8 flex flex-col gap-4 sm:flex-row md:mt-10" style={{ animationDelay: "0.3s" }}>
           <a
             href="#menu"
             className="rounded-full bg-[#f0c000] px-8 py-4 text-base font-bold text-[#141210] transition-all hover:bg-[#ffd940] hover:shadow-lg hover:shadow-[#f0c000]/40"
