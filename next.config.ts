@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    // Serve images directly — bypass Next.js image optimizer
+    // More reliable for international CDN delivery
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;

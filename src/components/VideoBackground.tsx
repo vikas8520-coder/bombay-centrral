@@ -28,16 +28,14 @@ export default function VideoBackground() {
       setTimeout(activate, 200);
     };
 
-    // Fallback: if canplaythrough doesn't fire in 5s, activate anyway
+    // Fallback: if canplaythrough doesn't fire in 3s, activate anyway
     const fallback = setTimeout(() => {
-      if (video.readyState >= 2) {
-        activate();
-      }
-    }, 5000);
+      activate();
+    }, 3000);
 
     // Also activate on loadeddata as a faster fallback
     const onLoadedData = () => {
-      if (video.readyState >= 2) {
+      if (video.readyState >= 1) {
         clearTimeout(fallback);
         setTimeout(activate, 300);
       }
@@ -96,15 +94,16 @@ export default function VideoBackground() {
       <video
         ref={videoRef}
         src="/bg-video.mp4"
+        poster="/menu-bg.jpg"
         muted
         playsInline
         preload="auto"
         className="absolute inset-0 h-full w-full object-cover"
       />
 
-      {/* Loading state — dark while video preloads */}
+      {/* Loading state — semi-transparent while video preloads */}
       {!ready && (
-        <div className="absolute inset-0 bg-[#0a0908]" />
+        <div className="absolute inset-0 bg-[#0a0908]/80" />
       )}
 
       {/* Subtle vignette for content readability — bottom only */}
