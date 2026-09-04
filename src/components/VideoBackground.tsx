@@ -19,6 +19,8 @@ export default function VideoBackground() {
       const scrollProgress = Math.min(window.scrollY / scrollHeight, 1);
       targetTime = scrollProgress * (video.duration || 0);
       video.currentTime = targetTime;
+      // Force the video element to display its current frame
+      video.style.opacity = "1";
       setReady(true);
     };
 
@@ -94,16 +96,15 @@ export default function VideoBackground() {
       <video
         ref={videoRef}
         src="/bg-video.mp4"
-        poster="/menu-bg.jpg"
         muted
         playsInline
         preload="auto"
         className="absolute inset-0 h-full w-full object-cover"
       />
 
-      {/* Loading state — semi-transparent while video preloads */}
+      {/* Loading state — dark while video preloads */}
       {!ready && (
-        <div className="absolute inset-0 bg-[#0a0908]/80" />
+        <div className="absolute inset-0 bg-[#0a0908]" />
       )}
 
       {/* Subtle vignette for content readability — bottom only */}
