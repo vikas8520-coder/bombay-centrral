@@ -1,20 +1,49 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function VideoBackground() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    video.load();
-
     let rafId: number | null = null;
     let targetTime = 0;
 
-    // Smooth easing loop
+    const activate = () => {
+      if (ready) return;
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollProgress = Math.min(window.scrollY / scrollHeight, 1);
+      targetTime = scrollProgress * (video.duration || 0);
+      video.currentTime = targetTime;
+      setReady(true);
+    };
+
+    // Wait for video to be fully bufferable
+    const onCanPlayThrough = () => {
+      // Small delay to let decoder warm up
+      setTimeout(activate, 200);
+    };
+
+    // Fallback: if canplaythrough doesn't fire in 5s, activate anyway
+    const fallback = setTimeout(() => {
+      if (video.readyState >= 2) {
+        activate();
+      }
+    }, 5000);
+
+    // Also activate on loadeddata as a faster fallback
+    const onLoadedData = () => {
+      if (video.readyState >= 2) {
+        clearTimeout(fallback);
+        setTimeout(activate, 300);
+      }
+    };
+
+    // Smooth scroll-driven seeking
     const tick = () => {
       rafId = null;
 
@@ -27,13 +56,13 @@ export default function VideoBackground() {
         return;
       }
 
-      // Fast ease — 50% per frame
       video.currentTime += diff * 0.5;
-
       rafId = requestAnimationFrame(tick);
     };
 
     const onScroll = () => {
+      if (!ready) return;
+
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrollTop = window.scrollY;
       const scrollProgress = Math.min(scrollTop / scrollHeight, 1);
@@ -47,26 +76,23 @@ export default function VideoBackground() {
       }
     };
 
-    const onLoaded = () => {
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollProgress = Math.min(window.scrollY / scrollHeight, 1);
-      targetTime = scrollProgress * (video.duration || 0);
-      video.currentTime = targetTime;
-    };
-
+    video.load();
+    video.addEventListener("canplaythrough", onCanPlayThrough);
+    video.addEventListener("loadeddata", onLoadedData);
     window.addEventListener("scroll", onScroll, { passive: true });
-    video.addEventListener("loadedmetadata", onLoaded);
 
     return () => {
+      clearTimeout(fallback);
+      video.removeEventListener("canplaythrough", onCanPlayThrough);
+      video.removeEventListener("loadeddata", onLoadedData);
       window.removeEventListener("scroll", onScroll);
-      video.removeEventListener("loadedmetadata", onLoaded);
       if (rafId) cancelAnimationFrame(rafId);
     };
-  }, []);
+  }, [ready]);
 
   return (
     <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-      {/* Video background — scroll-reactive, full quality */}
+      {/* Video background — full quality, scroll-reactive */}
       <video
         ref={videoRef}
         src="/bg-video.mp4"
@@ -75,6 +101,11 @@ export default function VideoBackground() {
         preload="auto"
         className="absolute inset-0 h-full w-full object-cover"
       />
+
+      {/* Loading state — dark while video preloads */}
+      {!ready && (
+        <div className="absolute inset-0 bg-[#0a0908]" />
+      )}
 
       {/* Subtle vignette for content readability — bottom only */}
       <div

@@ -4,6 +4,9 @@ import "./globals.css";
 import InteractiveBackgroundClient from "@/components/InteractiveBackgroundClient";
 import ScrollToTop from "@/components/ScrollToTop";
 import VideoBackground from "@/components/VideoBackground";
+import { CartProvider } from "@/lib/cart-context";
+import CartDrawer from "@/components/CartDrawer";
+import CartButton from "@/components/CartButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,7 +53,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {/* Interactive floating text layer — reacts to scroll */}
         <InteractiveBackgroundClient />
         {/* Content wrapper — transparent so PDF + floating text show through */}
-        <div className="relative z-10 flex flex-col flex-1">{children}</div>
+        <CartProvider>
+          <div className="relative z-10 flex flex-col flex-1">{children}</div>
+          {/* Floating cart button */}
+          <CartButton />
+          {/* Cart drawer (slides in from right) */}
+          <CartDrawer />
+        </CartProvider>
       </body>
     </html>
   );
