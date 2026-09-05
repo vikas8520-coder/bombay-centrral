@@ -43,13 +43,6 @@ export default function Hero() {
             Read Reviews
           </a>
         </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-          <div className="flex flex-col items-center gap-2 text-[#f5f0e8]/40">
-            <span className="text-xs uppercase tracking-widest">Scroll</span>
-            <div className="h-12 w-px animate-pulse bg-gradient-to-b from-[#f0c000] to-transparent" />
-          </div>
-        </div>
       </div>
     </section>
   );
