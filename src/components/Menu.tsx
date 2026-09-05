@@ -72,14 +72,13 @@ function ItemModal({
         onClick={(e) => e.stopPropagation()}
         className="w-full max-w-[340px] overflow-hidden rounded-2xl border border-[#1f1c18] bg-[#141210] shadow-2xl"
       >
-        {/* Image — fits to image's natural aspect ratio, max 200px tall */}
+        {/* Image — fills modal edge to edge */}
         {item.image && (
-          <div className="relative w-full overflow-hidden bg-[#1f1c18]" style={{ maxHeight: "200px" }}>
+          <div className="relative w-full h-44 overflow-hidden bg-[#1f1c18]">
             <img
               src={item.image}
               alt={item.name}
-              className="block w-full object-contain"
-              style={{ maxHeight: "200px" }}
+              className="h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#141210] via-transparent to-transparent pointer-events-none" />
             {item.tag && (
