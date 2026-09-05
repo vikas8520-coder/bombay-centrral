@@ -74,11 +74,11 @@ function ItemModal({
       >
         {/* Image — direct img tag for instant loading (bypass Next.js optimizer) */}
         {item.image && (
-          <div className="relative h-64 w-full">
+          <div className="relative h-64 w-full overflow-hidden bg-[#1f1c18]">
             <img
               src={item.image}
               alt={item.name}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-contain"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#141210] via-transparent to-transparent" />
             {item.tag && (
