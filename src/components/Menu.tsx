@@ -15,62 +15,39 @@ interface SelectedItem {
   category: string;
 }
 
-function MenuItemCard({
+function MenuItemRow({
   item,
-  category,
   onClick,
 }: {
   item: typeof menu[0]["items"][0];
-  category: string;
   onClick: () => void;
 }) {
   return (
     <button
       onClick={onClick}
-      className="tilt-card group relative w-full overflow-hidden rounded-lg border border-[#1f1c18] bg-[#1f1c18]/80 text-left transition-all hover:border-[#f0c000]/40"
+      className="group block w-full text-left transition-colors hover:bg-[#f0c000]/10"
     >
-      {/* Food image — compact */}
-      {item.image && (
-        <div className="img-zoom relative h-14 w-full md:h-16">
-          <Image
-            src={item.image}
-            alt={item.name}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 20vw"
-            className="object-cover"
-          />
-          {/* Dark gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1f1c18] via-transparent to-transparent" />
-          {/* Tag */}
+      <div className="flex items-baseline gap-2">
+        {/* Item name */}
+        <span className="font-bold text-[#141210] group-hover:text-[#0a0908]">
+          {item.name}
           {item.tag && (
-            <span className="absolute top-1 left-1 rounded-full bg-[#f0c000] px-1.5 py-0.5 text-[9px] font-bold text-[#141210]">
+            <span className="ml-2 inline-block rounded bg-[#141210] px-1.5 py-0.5 text-[9px] font-bold uppercase text-[#f0c000] align-middle">
               {item.tag}
             </span>
           )}
-        </div>
-      )}
-
-      {/* Content */}
-      <div className="relative p-2">
-        <div className="flex items-start justify-between gap-1">
-          <h4 className="text-xs font-bold leading-tight text-[#f5f0e8]">{item.name}</h4>
-          <span className="whitespace-nowrap text-sm font-bold text-[#f0c000]">
-            {item.price}
-          </span>
-        </div>
-        <p className="mt-0.5 text-[10px] leading-snug text-[#f5f0e8]/60">
-          {item.description}
-        </p>
-        <div className="mt-1.5 flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-[#f0c000]/60 transition-colors group-hover:text-[#f0c000]">
-          <span>Tap to add</span>
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-            <path d="M9 18l6-6-6-6" />
-          </svg>
-        </div>
+        </span>
+        {/* Dotted leader */}
+        <span className="flex-1 border-b border-dotted border-[#141210]/30" />
+        {/* Price */}
+        <span className="font-bold text-[#141210] whitespace-nowrap">
+          {item.price}
+        </span>
       </div>
-
-      {/* Hover glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#f0c000]/0 to-[#f0c000]/0 opacity-0 transition-opacity duration-300 group-hover:from-[#f0c000]/10 group-hover:to-transparent group-hover:opacity-100 pointer-events-none" />
+      {/* Description */}
+      <p className="text-sm text-[#141210]/70 mt-0.5">
+        {item.description}
+      </p>
     </button>
   );
 }
@@ -227,9 +204,9 @@ export default function Menu() {
       {/* Top border */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#f0c000] to-transparent" />
 
-      <div className="relative mx-auto max-w-7xl px-6">
+      <div className="relative mx-auto max-w-5xl px-6">
         {/* Header */}
-        <div className="mb-16 text-center">
+        <div className="mb-12 text-center">
           <p className="mb-2 text-sm font-bold uppercase tracking-widest text-[#f0c000]">
             Our Menu
           </p>
@@ -241,44 +218,56 @@ export default function Menu() {
           </p>
         </div>
 
-        {/* Menu categories */}
-        <div className="space-y-10">
-          {menu.map((category) => (
-            <div key={category.category}>
-              <h3 className="mb-5 flex items-center gap-3 text-xl font-bold text-[#ffd940]">
-                <span className="h-px flex-1 bg-[#f0c000]/30" />
-                {category.category}
-                <span className="h-px flex-1 bg-[#f0c000]/30" />
-              </h3>
-
-              <div className="grid grid-cols-2 gap-2.5 md:grid-cols-4 md:gap-3 lg:grid-cols-5">
-                {category.items.map((item) => (
-                  <MenuItemCard
-                    key={item.name}
-                    item={item}
-                    category={category.category}
-                    onClick={() => handleClickItem(item, category.category)}
-                  />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Note */}
-        <div className="mt-16 flex flex-col items-center gap-3 text-center">
-          <div className="flex items-center gap-4">
-            <span className="rounded-full border border-[#4a7c2f]/40 bg-[#4a7c2f]/10 px-4 py-2 text-sm font-bold text-[#7bc55f]">
-              100% Pure Veg
-            </span>
-            <span className="rounded-full border border-[#f0c000]/40 bg-[#f0c000]/10 px-4 py-2 text-sm font-bold text-[#f0c000]">
-              Ask for Jain option
-            </span>
+        {/* Printed menu — yellow paper with black text */}
+        <div className="rounded-lg border-2 border-[#141210]/20 bg-[#f0c000] p-6 md:p-10 shadow-2xl">
+          {/* Menu header — like a real printed menu */}
+          <div className="mb-8 border-b-2 border-[#141210]/30 pb-4 text-center">
+            <h3 className="text-2xl font-black uppercase tracking-wider text-[#141210]">
+              Bombay Centrral
+            </h3>
+            <p className="text-sm font-medium text-[#141210]/70 mt-1">
+              Mumbai Street Food · Pure Veg
+            </p>
           </div>
-          <p className="text-sm text-[#f5f0e8]/40">
-            * Prices are indicative. Visit our outlets or order via WhatsApp for current pricing and availability.
-          </p>
+
+          {/* Menu categories — two columns on desktop */}
+          <div className="grid gap-8 md:grid-cols-2 md:gap-x-12">
+            {menu.map((category, idx) => (
+              <div key={category.category} className={idx % 2 === 1 ? "md:mt-0" : ""}>
+                {/* Category header */}
+                <h4 className="mb-3 border-b border-[#141210]/40 pb-1 text-lg font-black uppercase tracking-wide text-[#141210]">
+                  {category.category}
+                </h4>
+                {/* Items */}
+                <div className="space-y-2.5">
+                  {category.items.map((item) => (
+                    <MenuItemRow
+                      key={item.name}
+                      item={item}
+                      onClick={() => handleClickItem(item, category.category)}
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Menu footer */}
+          <div className="mt-8 border-t-2 border-[#141210]/30 pt-4 text-center">
+            <div className="flex flex-wrap items-center justify-center gap-3 text-sm font-bold text-[#141210]">
+              <span className="rounded bg-[#141210] px-3 py-1 text-[#f0c000]">100% Pure Veg</span>
+              <span className="rounded bg-[#141210] px-3 py-1 text-[#f0c000]">Ask for Jain option</span>
+            </div>
+            <p className="mt-3 text-xs text-[#141210]/60">
+              * Prices are indicative. Visit our outlets or order via WhatsApp for current pricing and availability.
+            </p>
+          </div>
         </div>
+
+        {/* Hint */}
+        <p className="mt-6 text-center text-sm text-[#f5f0e8]/40">
+          Tap any item to see the photo and add to cart
+        </p>
       </div>
 
       {/* Item modal */}
