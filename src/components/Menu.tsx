@@ -64,34 +64,35 @@ function ItemModal({
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[200] flex items-center justify-center bg-black/70 p-4"
+      className="fixed inset-0 z-[200] flex items-center justify-center bg-black/70 p-3"
       onClick={onClose}
     >
       {/* Modal — stopPropagation so clicks inside don't close */}
       <div
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-md overflow-hidden rounded-2xl border border-[#1f1c18] bg-[#141210] shadow-2xl"
+        className="w-full max-w-[340px] overflow-hidden rounded-2xl border border-[#1f1c18] bg-[#141210] shadow-2xl"
       >
-        {/* Image — direct img tag for instant loading (bypass Next.js optimizer) */}
+        {/* Image — fits to image's natural aspect ratio, max 200px tall */}
         {item.image && (
-          <div className="relative h-64 w-full overflow-hidden bg-[#1f1c18]">
+          <div className="relative w-full overflow-hidden bg-[#1f1c18]" style={{ maxHeight: "200px" }}>
             <img
               src={item.image}
               alt={item.name}
-              className="h-full w-full object-contain"
+              className="block w-full object-contain"
+              style={{ maxHeight: "200px" }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#141210] via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#141210] via-transparent to-transparent pointer-events-none" />
             {item.tag && (
-              <span className="absolute top-3 left-3 rounded-full bg-[#f0c000] px-2.5 py-1 text-[10px] font-bold text-[#141210]">
+              <span className="absolute top-2 left-2 rounded-full bg-[#f0c000] px-2 py-0.5 text-[9px] font-bold text-[#141210]">
                 {item.tag}
               </span>
             )}
             {/* Close button */}
             <button
               onClick={onClose}
-              className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70"
+              className="absolute top-2 right-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70"
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M18 6L6 18M6 6l12 12" />
               </svg>
             </button>
@@ -99,43 +100,43 @@ function ItemModal({
         )}
 
         {/* Content */}
-        <div className="p-5">
+        <div className="p-4">
           {/* Category */}
-          <p className="mb-1 text-[10px] font-bold uppercase tracking-widest text-[#f0c000]/60">
+          <p className="mb-0.5 text-[9px] font-bold uppercase tracking-widest text-[#f0c000]/60">
             {item.category}
           </p>
 
           {/* Name + price */}
-          <div className="flex items-start justify-between gap-3">
-            <h3 className="text-lg font-bold leading-tight text-[#f5f0e8]">
+          <div className="flex items-start justify-between gap-2">
+            <h3 className="text-base font-bold leading-tight text-[#f5f0e8]">
               {item.name}
             </h3>
-            <span className="whitespace-nowrap text-xl font-bold text-[#f0c000]">
+            <span className="whitespace-nowrap text-lg font-bold text-[#f0c000]">
               ₹{item.price}
             </span>
           </div>
 
           {/* Description */}
-          <p className="mt-2 text-sm leading-relaxed text-[#f5f0e8]/60">
+          <p className="mt-1.5 text-xs leading-relaxed text-[#f5f0e8]/60">
             {item.description}
           </p>
 
           {/* Quantity selector */}
-          <div className="mt-5 flex items-center justify-between">
-            <span className="text-sm font-bold text-[#f5f0e8]/80">Quantity</span>
-            <div className="flex items-center gap-3">
+          <div className="mt-4 flex items-center justify-between">
+            <span className="text-xs font-bold text-[#f5f0e8]/80">Quantity</span>
+            <div className="flex items-center gap-2.5">
               <button
                 onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-[#1f1c18] text-lg font-bold text-[#f5f0e8] hover:bg-[#f0c000] hover:text-[#141210]"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1f1c18] text-base font-bold text-[#f5f0e8] hover:bg-[#f0c000] hover:text-[#141210]"
               >
                 −
               </button>
-              <span className="w-8 text-center text-lg font-bold text-[#f5f0e8]">
+              <span className="w-6 text-center text-base font-bold text-[#f5f0e8]">
                 {quantity}
               </span>
               <button
                 onClick={() => setQuantity((q) => q + 1)}
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-[#1f1c18] text-lg font-bold text-[#f5f0e8] hover:bg-[#f0c000] hover:text-[#141210]"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1f1c18] text-base font-bold text-[#f5f0e8] hover:bg-[#f0c000] hover:text-[#141210]"
               >
                 +
               </button>
@@ -143,10 +144,10 @@ function ItemModal({
           </div>
 
           {/* Total + add button */}
-          <div className="mt-5 flex items-center justify-between gap-3">
+          <div className="mt-4 flex items-center justify-between gap-2">
             <div>
-              <p className="text-xs text-[#f5f0e8]/40">Total</p>
-              <p className="text-xl font-bold text-[#f0c000]">
+              <p className="text-[10px] text-[#f5f0e8]/40">Total</p>
+              <p className="text-lg font-bold text-[#f0c000]">
                 ₹{item.price * quantity}
               </p>
             </div>
@@ -155,7 +156,7 @@ function ItemModal({
                 onAdd(quantity);
                 onClose();
               }}
-              className="flex-1 rounded-xl bg-[#f0c000] py-3.5 text-center font-bold text-[#141210] transition-all hover:bg-[#ffd940]"
+              className="flex-1 rounded-xl bg-[#f0c000] py-3 text-center text-sm font-bold text-[#141210] transition-all hover:bg-[#ffd940]"
             >
               Add to Cart · ₹{item.price * quantity}
             </button>
