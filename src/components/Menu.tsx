@@ -219,7 +219,7 @@ export default function Menu() {
         </div>
 
         {/* Printed menu — black background with yellow text, semi-transparent */}
-        <div className="rounded-lg border-2 border-[#f0c000]/30 bg-[#0a0908]/70 backdrop-blur-sm p-6 md:p-10 shadow-2xl">
+        <div className="rounded-lg border-2 border-[#f0c000]/30 bg-[#0a0908]/50 backdrop-blur-sm p-6 md:p-10 shadow-2xl">
           {/* Menu header — like a real printed menu */}
           <div className="mb-8 border-b-2 border-[#f0c000]/30 pb-4 text-center">
             <h3 className="text-2xl font-black uppercase tracking-wider text-[#f0c000]">
