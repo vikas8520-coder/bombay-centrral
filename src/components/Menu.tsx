@@ -25,27 +25,27 @@ function MenuItemRow({
   return (
     <button
       onClick={onClick}
-      className="group block w-full text-left transition-colors hover:bg-[#f0c000]/10"
+      className="group block w-full text-left transition-colors hover:bg-[#f0c000]/15"
     >
       <div className="flex items-baseline gap-2">
         {/* Item name */}
-        <span className="font-bold text-[#141210] group-hover:text-[#0a0908]">
+        <span className="font-bold text-[#f0c000] group-hover:text-[#ffd940]">
           {item.name}
           {item.tag && (
-            <span className="ml-2 inline-block rounded bg-[#141210] px-1.5 py-0.5 text-[9px] font-bold uppercase text-[#f0c000] align-middle">
+            <span className="ml-2 inline-block rounded bg-[#f0c000] px-1.5 py-0.5 text-[9px] font-bold uppercase text-[#141210] align-middle">
               {item.tag}
             </span>
           )}
         </span>
         {/* Dotted leader */}
-        <span className="flex-1 border-b border-dotted border-[#141210]/30" />
+        <span className="flex-1 border-b border-dotted border-[#f0c000]/30" />
         {/* Price */}
-        <span className="font-bold text-[#141210] whitespace-nowrap">
+        <span className="font-bold text-[#f0c000] whitespace-nowrap">
           {item.price}
         </span>
       </div>
       {/* Description */}
-      <p className="text-sm text-[#141210]/70 mt-0.5">
+      <p className="text-sm text-[#f5f0e8]/60 mt-0.5">
         {item.description}
       </p>
     </button>
@@ -218,14 +218,14 @@ export default function Menu() {
           </p>
         </div>
 
-        {/* Printed menu — yellow paper with black text, semi-transparent */}
-        <div className="rounded-lg border-2 border-[#141210]/20 bg-[#f0c000]/85 backdrop-blur-sm p-6 md:p-10 shadow-2xl">
+        {/* Printed menu — black background with yellow text, semi-transparent */}
+        <div className="rounded-lg border-2 border-[#f0c000]/30 bg-[#0a0908]/70 backdrop-blur-sm p-6 md:p-10 shadow-2xl">
           {/* Menu header — like a real printed menu */}
-          <div className="mb-8 border-b-2 border-[#141210]/30 pb-4 text-center">
-            <h3 className="text-2xl font-black uppercase tracking-wider text-[#141210]">
+          <div className="mb-8 border-b-2 border-[#f0c000]/30 pb-4 text-center">
+            <h3 className="text-2xl font-black uppercase tracking-wider text-[#f0c000]">
               Bombay Centrral
             </h3>
-            <p className="text-sm font-medium text-[#141210]/70 mt-1">
+            <p className="text-sm font-medium text-[#f5f0e8]/70 mt-1">
               Mumbai Street Food · Pure Veg
             </p>
           </div>
@@ -235,7 +235,7 @@ export default function Menu() {
             {menu.map((category, idx) => (
               <div key={category.category} className={idx % 2 === 1 ? "md:mt-0" : ""}>
                 {/* Category header */}
-                <h4 className="mb-3 border-b border-[#141210]/40 pb-1 text-lg font-black uppercase tracking-wide text-[#141210]">
+                <h4 className="mb-3 border-b border-[#f0c000]/40 pb-1 text-lg font-black uppercase tracking-wide text-[#ffd940]">
                   {category.category}
                 </h4>
                 {/* Items */}
@@ -253,12 +253,12 @@ export default function Menu() {
           </div>
 
           {/* Menu footer */}
-          <div className="mt-8 border-t-2 border-[#141210]/30 pt-4 text-center">
-            <div className="flex flex-wrap items-center justify-center gap-3 text-sm font-bold text-[#141210]">
-              <span className="rounded bg-[#141210] px-3 py-1 text-[#f0c000]">100% Pure Veg</span>
-              <span className="rounded bg-[#141210] px-3 py-1 text-[#f0c000]">Ask for Jain option</span>
+          <div className="mt-8 border-t-2 border-[#f0c000]/30 pt-4 text-center">
+            <div className="flex flex-wrap items-center justify-center gap-3 text-sm font-bold">
+              <span className="rounded border border-[#f0c000]/40 bg-[#f0c000]/10 px-3 py-1 text-[#f0c000]">100% Pure Veg</span>
+              <span className="rounded border border-[#f0c000]/40 bg-[#f0c000]/10 px-3 py-1 text-[#f0c000]">Ask for Jain option</span>
             </div>
-            <p className="mt-3 text-xs text-[#141210]/60">
+            <p className="mt-3 text-xs text-[#f5f0e8]/40">
               * Prices are indicative. Visit our outlets or order via WhatsApp for current pricing and availability.
             </p>
           </div>
