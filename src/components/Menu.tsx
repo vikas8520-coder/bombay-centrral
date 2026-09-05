@@ -71,16 +71,16 @@ function ItemModal({
       {/* Modal — stopPropagation so clicks inside don't close */}
       <div
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-sm overflow-hidden rounded-2xl border border-[#1f1c18] bg-[#141210] shadow-2xl"
+        className="w-full max-w-md overflow-hidden rounded-2xl border border-[#1f1c18] bg-[#141210] shadow-2xl"
       >
         {/* Image */}
         {item.image && (
-          <div className="relative h-40 w-full">
+          <div className="relative h-64 w-full">
             <Image
               src={item.image}
               alt={item.name}
               fill
-              sizes="(max-width: 400px) 100vw, 400px"
+              sizes="(max-width: 500px) 100vw, 500px"
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#141210] via-transparent to-transparent" />
